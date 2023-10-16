@@ -6,6 +6,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import HomePage from "../pages/Home/Home";
 import LogIn from "../pages/Login/LogIn";
 import Register from "../pages/Register/Register";
+import Users from "../components/Users";
 
 const Router = createBrowserRouter([
     {
@@ -34,6 +35,11 @@ const Router = createBrowserRouter([
             {
                 path:'/signup',
                 element:<Register></Register>
+            },
+            {
+                path:'/users',
+                element:<Users></Users>,
+                loader:()=>fetch('http://localhost:5000/user')
             }
         ]
     }

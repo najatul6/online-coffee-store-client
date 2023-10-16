@@ -1,13 +1,47 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext)
+
+
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
+        const name = form.name.value;
         const password = form.password.value;
-        console.log(name, email, password)
+        createUser(name, email, password)
+            .then(result => {
+                console.log(result.user);
+                // new user has been created 
+                const createdAt = result.user.metadata.creationTime;
+                const user = {name, email, createdAt: createdAt }
+                fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire(
+                                'The Internet?',
+                                'That thing is still around?',
+                                'success'
+                            )
+                            form.reset()
+                        }
+                    })
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (
@@ -24,7 +58,7 @@ const Register = () => {
                         <div className="mb-4 flex flex-col gap-6">
                             <div className="relative h-11 w-full min-w-[200px]">
                                 <input
-                                required
+                                    required
                                     name="name"
                                     id="Name"
                                     className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -36,7 +70,7 @@ const Register = () => {
                             </div>
                             <div className="relative h-11 w-full min-w-[200px]">
                                 <input
-                                required
+                                    required
                                     type="email"
                                     id="Email"
                                     name="email"
@@ -49,7 +83,7 @@ const Register = () => {
                             </div>
                             <div className="relative h-11 w-full min-w-[200px]">
                                 <input
-                                required
+                                    required
                                     name="password"
                                     id="Password"
                                     type="password"
@@ -68,7 +102,7 @@ const Register = () => {
                                 data-ripple-dark="true"
                             >
                                 <input
-                                required
+                                    required
                                     type="checkbox"
                                     className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-pink-500 checked:bg-pink-500 checked:before:bg-pink-500 hover:before:opacity-10"
                                     id="checkbox"
