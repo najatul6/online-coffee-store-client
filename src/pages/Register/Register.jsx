@@ -19,7 +19,7 @@ const Register = () => {
                 // new user has been created 
                 const createdAt = result.user?.metadata?.creationTime;
                 const user = {name, email, createdAt: createdAt }
-                fetch('http://localhost:5000/user', {
+                fetch('https://online-coffee-store-server-qkjbw3zjx-jinkalas-projects.vercel.app/user', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -50,8 +50,8 @@ const Register = () => {
     }
 
     return (
-        <div style={{ backgroundImage: "url(/24.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100%", }}>
-            <div className="max-w-[1440px] min-h-screen mx-auto py-5 flex justify-center items-center">
+        <div style={{ backgroundImage: "url(/24.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "cover", }}>
+            <div className="max-w-[1440px] mx-auto py-5 flex justify-center items-center">
                 <div className="relative flex flex-col items-center rounded-xl bg-transparent bg-clip-border text-white shadow-xl md:p-8">
                     <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                         Sign Up

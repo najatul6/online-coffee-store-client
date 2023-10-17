@@ -16,7 +16,7 @@ const Users = () => {
             denyButtonText: `Cancel`,
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/user/${id}`, {
+                fetch(`https://online-coffee-store-server-qkjbw3zjx-jinkalas-projects.vercel.app/user/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

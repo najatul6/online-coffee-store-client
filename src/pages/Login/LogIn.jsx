@@ -21,7 +21,7 @@ const LogIn = () => {
                 }
                 // update data  Last log in data base
 
-                fetch('http://localhost:5000/user', {
+                fetch('https://online-coffee-store-server-qkjbw3zjx-jinkalas-projects.vercel.app/user', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'
@@ -54,8 +54,8 @@ const LogIn = () => {
     }
 
     return (
-        <div style={{ backgroundImage: "url(/9.png)", backgroundRepeat: "no-repeat", backgroundSize: "100%", mixBlendMode: 'darken' }}>
-            <div className="max-w-[1440px] min-h-screen mx-auto py-5 flex justify-center items-center">
+        <div style={{ backgroundImage: "url(/9.png)", backgroundRepeat: "no-repeat", backgroundSize: "cover", mixBlendMode: 'darken' }}>
+            <div className="max-w-[1440px] mx-auto py-5 md:py-10 flex justify-center items-center">
                 <div className="relative flex flex-col items-center rounded-xl bg-transparent bg-clip-border text-[#331A15] shadow-xl md:p-8">
                     <h4 className="block text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                         Log in

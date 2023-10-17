@@ -21,7 +21,7 @@ const UpdateCoffee = () => {
         console.log(updatedCoffee)
 
         // Send Data to the server 
-        fetch(`http://localhost:5000/coffee/${_id}`, {
+        fetch(`https://online-coffee-store-server-qkjbw3zjx-jinkalas-projects.vercel.app/coffee/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
