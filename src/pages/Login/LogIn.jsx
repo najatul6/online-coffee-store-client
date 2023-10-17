@@ -1,13 +1,56 @@
 import { Link } from "react-router-dom";
-import { BsGoogle } from "react-icons/bs";
+// import { BsGoogle } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
-    const handleLogIn= e=>{
+    const { signInUser } = useContext(AuthContext)
+
+    const handleLogIn = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+
+        signInUser(email, password)
+            .then(result => {
+                const user = {
+                    email,
+                    lastLogInAt: result.user?.metadata?.lastSignInTime
+                }
+                // update data  Last log in data base
+
+                fetch('http://localhost:5000/user', {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data) {
+
+                            // Alert 
+                            Swal.fire(
+                                'Great !',
+                                'Log In Successfully!',
+                                'success'
+                            )
+                            form.reset()
+                        }
+                    })
+
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Oops...',
+                    text: error.message,
+                    icon: 'error',
+                })
+            })
     }
 
     return (
@@ -58,7 +101,7 @@ const LogIn = () => {
                             Log in
                         </button>
                     </form>
-                    <div>
+                    {/* <div>
                         <div className="flex justify-center items-center py-4">
                             <p className="h-1 w-9 bg-[#331A15] rounded-full"></p>
                             <p className="text-lg mx-2"> Continue With</p>
@@ -70,7 +113,7 @@ const LogIn = () => {
                                 Google
                             </button>
                         </div>
-                    </div>
+                    </div> */}
                     <p className="mt-4 block text-center text-lg font-bold leading-relaxed text-[#331A15] antialiased">
                         Create an account?
                         <Link

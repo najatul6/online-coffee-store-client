@@ -17,7 +17,7 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 // new user has been created 
-                const createdAt = result.user.metadata.creationTime;
+                const createdAt = result.user?.metadata?.creationTime;
                 const user = {name, email, createdAt: createdAt }
                 fetch('http://localhost:5000/user', {
                     method: 'POST',
@@ -31,8 +31,8 @@ const Register = () => {
                     .then(data => {
                         if (data.insertedId) {
                             Swal.fire(
-                                'The Internet?',
-                                'That thing is still around?',
+                                'Success',
+                                'User Created Successfully!',
                                 'success'
                             )
                             form.reset()
@@ -40,7 +40,12 @@ const Register = () => {
                     })
             })
             .catch(error => {
-                console.error(error)
+                Swal.fire({
+                    title: 'Oops...',
+                    text: error.message,
+                    icon: 'error',
+                })
+                
             })
     }
 

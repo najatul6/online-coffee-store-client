@@ -38,7 +38,7 @@ const Users = () => {
             <div className="max-w-[1440px] mx-auto py-5">
                 <div className="flex justify-center items-center min-h-screen">
                     <div>
-                        <h2 className="text-4xl text-center py-5">Total Users : {loadedUser.length}</h2>
+                        <h2 className="text-4xl text-center py-5">Total Users : {users.length}</h2>
                         <div className="overflow-x-auto">
                             <table className="table border">
                                 {/* head */}
@@ -48,6 +48,7 @@ const Users = () => {
                                         <th className="border">Name</th>
                                         <th className="border">Email</th>
                                         <th className="border">Create Date</th>
+                                        <th className="border">Last Log In</th>
                                         <th className="border">Action</th>
                                     </tr>
                                 </thead>
@@ -59,6 +60,7 @@ const Users = () => {
                                                 <td className="border">{user.name}</td>
                                                 <td className="border">{user.email}</td>
                                                 <td className="border">{user.createdAt}</td>
+                                                <td className="border">{user.lastLogInAt}</td>
                                                 <td className="border text-center text-red-500 text-xl">
                                                     <button onClick={() => handleDelete(user._id)}>
                                                         <IoPersonRemoveSharp></IoPersonRemoveSharp>
