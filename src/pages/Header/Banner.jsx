@@ -24,22 +24,22 @@ const Banner = () => {
             <div className="bg-[#ECEAE3] py-12 px-2">
                 <div className="max-w-[1440px] mx-auto grid grid-cols-2  lg:grid-cols-4 gap-9">
                     <div>
-                        <img className="w-[70px] h-[70px]" src="/public/icons/1.png" alt="" />
+                        <img className="w-[70px] h-[70px]" src="/11.png" alt="" />
                         <h2 className="text-2xl lg:text-4xl my-4">Awesome Aroma</h2>
                         <p>You will definitely be a fan of the design & aroma of your coffee</p>
                     </div>
                     <div>
-                        <img className="w-[70px] h-[70px]" src="/public/icons/2.png" alt="" />
+                        <img className="w-[70px] h-[70px]" src="/2.png" alt="" />
                         <h2 className="text-2xl lg:text-4xl my-4">High Quality</h2>
                         <p>We served the coffee to you maintaining the best quality</p>
                     </div>
                     <div>
-                        <img className="w-[70px] h-[70px]" src="/public/icons/3.png" alt="" />
+                        <img className="w-[70px] h-[70px]" src="/33.png" alt="" />
                         <h2 className="text-2xl lg:text-4xl my-4">Pure Grades</h2>
                         <p>The coffee is made of the green coffee beans which you will love</p>
                     </div>
                     <div>
-                        <img className="w-[70px] h-[70px]" src="/public/icons/4.png" alt="" />
+                        <img className="w-[70px] h-[70px]" src="/4.png" alt="" />
                         <h2 className="text-2xl lg:text-4xl my-4">Proper Roasting</h2>
                         <p>Your coffee is brewed by first roasting the green coffee beans</p>
                     </div>
